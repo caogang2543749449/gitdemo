@@ -1,0 +1,33 @@
+<?php
+
+return [
+    'Id'                     => '设施ID',
+    'Pid'                    => '父ID',
+    'Parent'                 => '父设施',
+    'Merchant_id'            => '商家ID',
+    'Facility_name'          => '设施名称',
+    'Tag'                    => '标识',
+    'label(split by ",")'    => '标签(半角逗号分割)',
+    'Facilityimages'         => '设施介绍图片',
+    'Description'            => '设施介绍',
+    'Service_time'           => '设施营业时间',
+    'Tel'                    => '设施电话',
+    'Address'                => '设施馆内地址',
+    'Inner_tel'              => '设施内线号码',
+    'Createtime'             => '创建时间',
+    'Updatetime'             => '更新时间',
+    'Deletetime'             => '删除时间',
+    'Index Vision'           => '首页展示方式',
+    'Show Cover'             => '展示封面',
+    'Show List'              => '展示子设施',
+    'Detail Vision'          => '详情页展示方式',
+    'Customize'              => '自定义',
+    'Merchant.merchant_name' => '商家名称',
+
+    'Room'                   => '包房',
+    'Private'                => '专人',
+    '24H'                    => '24H',
+    'Free'                   => '免费',
+    'Childcare'              => '托儿',
+    'Chinese'                => '中文',
+];

@@ -1,0 +1,30 @@
+<?php
+
+return [
+    'Pid'                         => '父ID',
+    'Merchant_id'                 => '店铺ID',
+    'Type'                        => '栏目类型',
+    'Name'                        => '管理端名称',
+    'Nickname'                    => '小程序显示名称',
+    'Image'                       => '图片',
+    'Keywords'                    => '关键字',
+    'Description'                 => '描述',
+    'Diyname'                     => '自定义名称',
+    'Createtime'                  => '创建时间',
+    'Updatetime'                  => '更新时间',
+    'Weigh'                       => '权重',
+    'Status'                      => '状态',
+    'Merchant.id'                 => '商家ID',
+    'Merchant.pid'                => '父ID',
+    'Merchant.merchant_name'      => '商家名称',
+    'Merchant.merchant_localname' => '本国语言名称',
+    'Merchant.merchant_type'      => '所属产品:参照eb_third表',
+    'Merchant.merchant_card'      => '商家信息卡',
+    'Merchant.status'             => '状态',
+    'Merchant.status 0'           => '未启用',
+    'Merchant.status 1'           => '正常',
+    'Merchant.status 2'           => '试用中',
+    'Merchant.createtime'         => '创建时间',
+    'Merchant.updatetime'         => '更新时间',
+    'Merchant.deletetime'         => '删除时间'
+];

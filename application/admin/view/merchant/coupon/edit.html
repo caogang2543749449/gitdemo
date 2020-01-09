@@ -1,0 +1,173 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Title')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-title" data-rule="required;length(~100)" class="form-control" name="row[title]" type="text" value="{$row.title|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Store_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-store_name" data-rule="required;length(~100)" class="form-control" name="row[store_name]" type="text" value="{$row.store_name|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Store_logo_image')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-store_logo_image" class="form-control" size="50"  data-rule="required;length(~255)"   name="row[store_logo_image]" type="text" value="{$row.store_logo_image|htmlentities}">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-store_logo_image" class="btn btn-danger plupload" data-input-id="c-store_logo_image" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-store_logo_image"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-store_logo_image" class="btn btn-primary fachoose" data-input-id="c-store_logo_image" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-store_logo_image"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-store_logo_image"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Store_address')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-store_address" data-rule="required;length(~255)"  class="form-control" name="row[store_address]" type="text" value="{$row.store_address|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group" id="f-gis_coord">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Gis_coord')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-gis_coord" data-rule="required" class="form-control" size="50" name="row[gis_coord]" type="text" value="{$row.gis_coord|htmlentities}">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" class="btn btn-info showmap" data-output-id="c-gis_coord" data-input-id="c-store_address"><i class="fa fa-map-marker"></i> {:__('Search')}</button></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Get_limit')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <select  id="c-get-limit-selector" class="form-control selectpicker">
+                <option value="0">{:__('No limit')}</option>
+                <option value="1">{:__('Limit')}</option>
+            </select>
+            <input  id="c-get_limit" name="row[get_limit]" type="number" value="{$row.get_limit}" style="display: none;margin-top: 5px;">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Get_rule')}:</label>
+        <div class="col-xs-12 col-sm-8">
+
+            <select  id="c-get_rule" data-rule="required" class="form-control selectpicker"  multiple="" name="row[get_rule][]">
+                {foreach name="getRuleList" item="vo"}
+                <option value="{$key}" {in name="key" value="$row.get_rule"}selected{/in}>{:__($vo)}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Use_rule')}:</label>
+        <div class="col-xs-12 col-sm-8">
+
+            <select  id="c-use_rule" data-rule="required" class="form-control selectpicker" name="row[use_rule]">
+                {foreach name="useRuleList" item="vo"}
+                <option value="{$key}" {in name="key" value="$row.use_rule"}selected{/in}>{:__($vo)}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Valid_switch')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                <select  id="c-valid_switch" class="form-control selectpicker" name="row[valid_switch]">
+                    {foreach name="validSwitchList" item="vo"}
+                    <option value="{$key}" {in name="key" value="$row.valid_switch"}selected{/in}>{:__($vo)}</option>
+                    {/foreach}
+                </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Start_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-start_time" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD 00:00:00" data-use-current="true" name="row[start_time]" type="text" value="{$row.start_time}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('End_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-end_time" data-rule="required; match(gt, row[start_time], date)" class="form-control datetimepicker" data-date-format="YYYY-MM-DD 23:59:59" data-use-current="true" name="row[end_time]" type="text" value="{$row.end_time}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Effe_days')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input  id="c-effe_days" name="row[effe_days]" type="number" value="{$row.effe_days}" min="1"> {:__('Within Days')}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Qr_image')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-qr_image"  class="form-control"  size="50"  data-rule="required,length(~255)"  name="row[qr_image]" type="text" value="{$row.qr_image|htmlentities}">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-qr_image" class="btn btn-danger plupload" data-input-id="c-qr_image" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-qr_image"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-qr_image" class="btn btn-primary fachoose" data-input-id="c-qr_image" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-qr_image"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-qr_image"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Rule')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-rule" data-rule="required" class="form-control" name="row[rule]" type="text" value="{$row.rule}"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Rule2')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-rule2" data-rule="required" class="form-control" name="row[rule2]" type="text" value="{$row.rule2}"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Content')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-content" class="form-control" rows="5" name="row[content]" cols="50">{$row.content|htmlentities}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Tax_free_switch')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            
+            <input  id="c-tax_free_switch" name="row[tax_free_switch]" type="hidden" value="{$row.tax_free_switch}">
+            <a href="javascript:;" data-toggle="switcher" class="btn-switcher" data-input-id="c-tax_free_switch" data-yes="1" data-no="0" >
+                <i class="fa fa-toggle-on text-success {eq name="$row.tax_free_switch" value="0"}fa-flip-horizontal text-gray{/eq} fa-2x"></i>
+            </a>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Open_switch')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            
+            <input  id="c-open_switch" name="row[open_switch]" type="hidden" value="{$row.open_switch}">
+            <a href="javascript:;" data-toggle="switcher" class="btn-switcher" data-input-id="c-open_switch" data-yes="1" data-no="0" >
+                <i class="fa fa-toggle-on text-success {eq name="$row.open_switch" value="0"}fa-flip-horizontal text-gray{/eq} fa-2x"></i>
+            </a>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Weigh')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-weigh" class="form-control" name="row[weigh]" type="number" value="{$row.weigh|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

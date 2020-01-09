@@ -1,0 +1,170 @@
+<div class="panel panel-default panel-intro">
+    <div class="panel-heading input-group">
+        <ul class="nav nav-tabs ">
+            <li class="active"><a href="#prop" data-value="" data-toggle="tab">{:__('Merchant Properties')}</a></li>
+            <li><a href="#qrcode" data-value="" data-toggle="tab">{:__('Wxapp qr code')}</a></li>
+        </ul>
+        <div class="input-group-btn">
+            <a href="/merchant/merchant_prop/edit?ids={$row.id}" class="btn btn-success btn-edit {:$auth->check('merchant/merchant_prop/edit')?'':'hide'}" title="{:__('Edit')}" ><i class="fa fa-pencil"></i> {:__('Edit')}</a>
+        </div>
+    </div>
+
+
+    <div class="panel-body">
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="prop">
+                <div class="form-horizontal">
+                    <input id="c-id" name="row[id]" type="hidden" value="{$row.id|htmlentities}">
+                    <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-2">{:__('Merchant_name')}:</label>
+                        <div class="col-xs-12 col-sm-8">
+                            <span id="c-merchant_name" class="form-control">{$row.merchant_name|htmlentities}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-2">{:__('Merchant_localname')}:</label>
+                        <div class="col-xs-12 col-sm-8">
+                            <span id="c-merchant_localname" class="form-control">{$row.merchant_localname|htmlentities}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-2">{:__('MerchantProperties.Logoimage')}:</label>
+                        <div class="col-xs-12 col-sm-8">
+                            <ul class="row list-inline plupload-preview" id="p-logoimage">
+                                <li class="col-xs-3">
+                                    <a href="{$row.MerchantProperties.logoimage}" data-url="{$row.MerchantProperties.logoimage}" target="_blank" class="thumbnail">
+                                        <img src="{$row.MerchantProperties.logoimage}" onerror="this.src='https://tool.fastadmin.net/icon/'+'{$row.MerchantProperties.logoimage}'.split('.').pop()+'.png';this.onerror=null;" class="img-responsive">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-2">{:__('MerchantProperties.Url')}:</label>
+                        <div class="col-xs-12 col-sm-8">
+                            <span id="c-url" class="form-control">{$row.MerchantProperties.url|htmlentities}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-2">{:__('MerchantProperties.Descimages')}:</label>
+                        <div class="col-xs-12 col-sm-8">
+                            <ul class="row list-inline plupload-preview" id="p-descimages">
+                                {foreach name="descImages" item="vo"}
+                                <li class="col-xs-3">
+                                    <a href="{$vo}" data-url="{$vo}" target="_blank" class="thumbnail">
+                                        <img src="{$vo}" onerror="this.src='https://tool.fastadmin.net/icon/'+'{$vo}'.split('.').pop()+'.png';this.onerror=null;" class="img-responsive">
+                                    </a>
+                                </li>
+                                {/foreach}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-2">{:__('MerchantProperties.Tel')}:</label>
+                        <div class="col-xs-12 col-sm-8">
+                            <span id="c-tel" class="form-control">{$row.MerchantProperties.tel|htmlentities}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-2">{:__('MerchantProperties.Fax')}:</label>
+                        <div class="col-xs-12 col-sm-8">
+                            <span id="c-fax" class="form-control">{$row.MerchantProperties.fax|htmlentities}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-2">{:__('MerchantProperties.Email')}:</label>
+                        <div class="col-xs-12 col-sm-8">
+                            <span id="c-email" class="form-control">{$row.MerchantProperties.email|htmlentities}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-2">{:__('MerchantProperties.Postcode')}:</label>
+                        <div class="col-xs-12 col-sm-8">
+                            <span id="c-postcode" class="form-control">{$row.MerchantProperties.postcode|htmlentities}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-2">{:__('MerchantProperties.Address1')}:</label>
+                        <div class="col-xs-12 col-sm-8">
+                            <span id="c-address1" class="form-control">{$row.MerchantProperties.address1|htmlentities}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-2">{:__('MerchantProperties.Address2')}:</label>
+                        <div class="col-xs-12 col-sm-8">
+                            <span id="c-address2" class="form-control">{$row.MerchantProperties.address2|htmlentities}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-2">{:__('MerchantProperties.Address3')}:</label>
+                        <div class="col-xs-12 col-sm-8">
+                            <span id="c-address3" class="form-control">{$row.MerchantProperties.address3|htmlentities}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-2">{:__('MerchantProperties.Address4')}:</label>
+                        <div class="col-xs-12 col-sm-8">
+                            <span id="c-address4" class="form-control">{$row.MerchantProperties.address4|htmlentities}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-2">{:__('MerchantProperties.Gis_coord')}:</label>
+                        <div class="col-xs-12 col-sm-8">
+                            <span id="c-gis_coord" class="form-control">{$row.MerchantProperties.gis_coord|htmlentities}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-2">{:__('Service time')}:</label>
+                        <div class="col-xs-12 col-sm-8">
+                            <span id="c-service_stime" size="20" class="form-control">{$row.MerchantProperties.service_stime|substr=0,5} - {$row.MerchantProperties.service_etime|substr=0,5}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-2">{:__('MerchantProperties.Notes')}:</label>
+                        <div class="col-xs-12 col-sm-8">
+                            <div id="c-notes" class="form-control" {if $row.MerchantProperties.notes}style="height: auto;"{/if}>{:str_replace(PHP_EOL,'<br>',$row.MerchantProperties.notes)}</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-2">{:__('MerchantPropertiesHotel.Checkin_time')}:</label>
+                        <div class="col-xs-12 col-sm-8">
+                            <span id="c-checkin_stime" size="20" class="form-control">{$row.MerchantPropertiesHotel.checkin_stime|substr=0,5} - {$row.MerchantPropertiesHotel.checkin_etime|substr=0,5}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-2">{:__('MerchantPropertiesHotel.Checkout_time')}:</label>
+                        <div class="col-xs-12 col-sm-8">
+                            <div id="c-checkout_stime" size="20" class="form-control">{$row.MerchantPropertiesHotel.checkout_stime|substr=0,5} - {$row.MerchantPropertiesHotel.checkout_etime|substr=0,5}</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-2">{:__('MerchantPropertiesHotel.Services')}:</label>
+                        <div class="col-xs-12 col-sm-8">
+                            <span  id="c-services" class="form-control">
+                                {foreach name="hotelServices" item="vo"}
+                                {if $vo}
+                                {:__('MerchantPropertiesHotel.Services '.$vo)}&nbsp;&nbsp;
+                                {/if}
+                                {/foreach}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade in" id="qrcode">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-8">
+                            {if isset($scancode)}
+                            <img src="{$scancode}" alt="{:__('Wxapp qr code')}" style="height: 500px;width: 500px">
+                            {else}
+                            <span class="text-red">{:__("No_wechat")}</span>
+                            {/if}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

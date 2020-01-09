@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <label class="col-xs-12 col-sm-2">{:__('Appid')}:</label>
+                <div class="col-xs-12 col-sm-8">
+                    {$row.appid}
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-xs-12 col-sm-2">{:__('Merchant')}:</label>
+                <div class="col-xs-12 col-sm-8">
+                    {$row.merchant.merchant_name}
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-xs-12 col-sm-2">{:__('Version')}:</label>
+                <div class="col-xs-12 col-sm-8">
+                    {$row.version}
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-xs-12 col-sm-2">{:__('Score_design')}:</label>
+                <div class="col-xs-12 col-sm-8">
+                    {$scoredesignlist[$row.score_design]}
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-xs-12 col-sm-2">{:__('Liked')}:</label>
+                <div class="col-xs-12 col-sm-8">
+                    {$row.liked}
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-xs-12 col-sm-2">{:__('Suggestion')}:</label>
+                <div class="col-xs-12 col-sm-8">
+                    {$row.suggestion}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

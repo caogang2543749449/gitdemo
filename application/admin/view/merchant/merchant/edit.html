@@ -1,0 +1,206 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <input id="c-id" name="row[id]" type="hidden" value="{$row.id|htmlentities}">
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2 required">{:__('Merchant_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-merchant_name" data-rule="required,length(~100)" class="form-control" name="row[merchant_name]" type="text" value="{$row.merchant_name|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2 required">{:__('Merchant_localname')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-merchant_localname" data-rule="required,length(~200)" class="form-control" name="row[merchant_localname]" type="text" value="{$row.merchant_localname|htmlentities}">
+        </div>
+    </div>
+    {if $is_platform}
+<!--    <div class="form-group">-->
+<!--        <label class="control-label col-xs-12 col-sm-2">{:__('Merchant_type')}:</label>-->
+<!--        <div class="col-xs-12 col-sm-8">-->
+<!--                        -->
+<!--            <select  id="c-merchant_type" class="form-control selectpicker" name="row[merchant_type]">-->
+<!--                {foreach name="merchantTypeList" item="vo"}-->
+<!--                    <option value="{$key}" {in name="key" value="$row.merchant_type"}selected{/in}>{$vo}</option>-->
+<!--                {/foreach}-->
+<!--            </select>-->
+
+<!--        </div>-->
+<!--    </div>-->
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            
+            <div class="radio">
+            {foreach name="statusList" item="vo"}
+            <label for="row[status]-{$key}"><input id="row[status]-{$key}" name="row[status]" type="radio" value="{$key}" {in name="key" value="$row.status"}checked{/in} /> {$vo}</label> 
+            {/foreach}
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Merchantpropertieshotel.Hotel_type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <select  id="c-hotel_type" class="form-control selectpicker" name="row[MerchantPropertiesHotel][hotel_type]">
+                {foreach name="hotelTypeList" item="vo"}
+                <option value="{$key}" {in name="key" value="$row.MerchantPropertiesHotel.hotel_type"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+        </div>
+    </div>
+    {/if}
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('MerchantProperties.Logoimage')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-logoimage" class="form-control" size="50"  data-rule="length(~255)" name="row[MerchantProperties][logoimage]" type="text" value="{$row.MerchantProperties.logoimage|htmlentities}">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-logoimage" class="btn btn-danger plupload" data-input-id="c-logoimage" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-logoimage"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-logoimage" class="btn btn-primary fachoose" data-input-id="c-logoimage" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-logoimage"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-logoimage"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('MerchantProperties.Url')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-url" class="form-control" name="row[MerchantProperties][url]"  data-rule="length(~255)" type="text" value="{$row.MerchantProperties.url|htmlentities}" data-rule="url">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('MerchantProperties.Descimages')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-descimages" class="form-control" size="50" name="row[MerchantProperties][descimages]" type="text"  data-rule="length(~4000)" value="{$row.MerchantProperties.descimages|htmlentities}">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-descimages" class="btn btn-danger plupload" data-input-id="c-descimages" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="true" data-maxcount="9" data-preview-id="p-descimages"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-descimages" class="btn btn-primary fachoose" data-input-id="c-descimages" data-mimetype="image/*" data-multiple="true" data-maxcount="9"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-descimages"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-descimages"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('MerchantProperties.Tel')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-tel" class="form-control" name="row[MerchantProperties][tel]" type="text"   data-rule="length(~20);tel" value="{$row.MerchantProperties.tel|htmlentities}" data-rule="tel">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('MerchantProperties.Fax')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-fax" class="form-control" name="row[MerchantProperties][fax]" type="text"   data-rule="length(~20)" value="{$row.MerchantProperties.fax|htmlentities}" data-rule="tel">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('MerchantProperties.Email')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-email" class="form-control" name="row[MerchantProperties][email]" type="text" value="{$row.MerchantProperties.email|htmlentities}" data-rule="email">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('MerchantProperties.Postcode')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-postcode" class="form-control" name="row[MerchantProperties][postcode]" type="text" value="{$row.MerchantProperties.postcode|htmlentities}" data-rule="digits" data-target=".postcode">
+                <div class="input-group-addon no-border no-padding postcode">
+                    <span><button type="button" class="btn btn-info jpzipsearch" data-output-id="c-address1|c-address2|c-address3" data-input-id="c-postcode"><i class="fa fa-search"></i> {:__('Search')}</button></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('MerchantProperties.Address1')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-address1" class="form-control" name="row[MerchantProperties][address1]" type="text" data-rule="length(~100)" value="{$row.MerchantProperties.address1|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('MerchantProperties.Address2')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-address2" class="form-control" name="row[MerchantProperties][address2]" type="text" data-rule="length(~100)" value="{$row.MerchantProperties.address2|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('MerchantProperties.Address3')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-address3" class="form-control" name="row[MerchantProperties][address3]" type="text" data-rule="length(~100)" value="{$row.MerchantProperties.address3|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('MerchantProperties.Address4')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-address4" class="form-control" name="row[MerchantProperties][address4]" type="text" data-rule="length(~100)" value="{$row.MerchantProperties.address4|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('MerchantProperties.Gis_coord')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-gis_coord" class="form-control" name="row[MerchantProperties][gis_coord]" type="text" value="{$row.MerchantProperties.gis_coord|htmlentities}">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" class="btn btn-info showmap" data-output-id="c-gis_coord" data-input-id="c-address1|c-address2|c-address3"><i class="fa fa-map-marker"></i> {:__('Search')}</button></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Service time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-service_stime" size="20" class="form-control-inline datetimepicker" data-date-format="HH:mm" data-date-show-today-button="false" data-date-show-close="false" name="row[MerchantProperties][service_stime]" type="text" value="{$row.MerchantProperties.service_stime|substr=0,5}">
+            -
+            <input id="c-service_etime" size="20" class="form-control-inline datetimepicker" data-date-format="HH:mm" data-date-show-today-button="false" data-date-show-close="false" name="row[MerchantProperties][service_etime]" type="text" value="{$row.MerchantProperties.service_etime|substr=0,5}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('MerchantProperties.Notes')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-notes" class="form-control " rows="5" name="row[MerchantProperties][notes]" cols="50">{$row.MerchantProperties.notes|htmlentities}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Merchantproperties.Attention')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-attention" class="form-control" name="row[MerchantProperties][attention]" type="text" maxlength="30" value="{$row.MerchantProperties.attention|htmlentities}" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('MerchantPropertiesHotel.Checkin_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-checkin_stime" size="20" class="form-control-inline datetimepicker" data-date-format="HH:mm" data-date-show-today-button="false" data-date-show-close="false" name="row[MerchantPropertiesHotel][checkin_stime]" type="text" value="{$row.MerchantPropertiesHotel.checkin_stime|substr=0,5}">
+            -
+            <input id="c-checkin_etime" size="20" class="form-control-inline datetimepicker" data-date-format="HH:mm" data-date-show-today-button="false" data-date-show-close="false" name="row[MerchantPropertiesHotel][checkin_etime]" type="text" value="{$row.MerchantPropertiesHotel.checkin_etime|substr=0,5}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('MerchantPropertiesHotel.Checkout_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-checkout_stime" size="20" class="form-control-inline datetimepicker" data-date-format="HH:mm" data-date-show-today-button="false" data-date-show-close="false" name="row[MerchantPropertiesHotel][checkout_stime]" type="text" value="{$row.MerchantPropertiesHotel.checkout_stime|substr=0,5}">
+            -
+            <input id="c-checkout_etime" size="20" class="form-control-inline datetimepicker" data-date-format="HH:mm" data-date-show-today-button="false" data-date-show-close="false" name="row[MerchantPropertiesHotel][checkout_etime]" type="text" value="{$row.MerchantPropertiesHotel.checkout_etime|substr=0,5}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('MerchantPropertiesHotel.Services')}:</label>
+        <div class="col-xs-12 col-sm-8">
+
+            <select  id="c-services" class="form-control selectpicker" multiple="" name="row[MerchantPropertiesHotel][services][]">
+                {foreach name="servicesList" item="vo"}
+                <option value="{$key}" {in name="key" value="$row.MerchantPropertiesHotel.services"}selected{/in}>{:__('MerchantPropertiesHotel.'.$vo)}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+
+</form>

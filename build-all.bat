@@ -1,0 +1,1 @@
+php think min --module=backend --resource=all --optimize=uglify

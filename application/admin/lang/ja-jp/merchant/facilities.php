@@ -1,0 +1,33 @@
+<?php
+
+return [
+    'Id'                     => '施設ID',
+    'Pid'                    => '親ID',
+    'Parent'                 => '親施設',
+    'Merchant_id'            => '店舗ID',
+    'Facility_name'          => '施設名',
+    'Tag'                    => 'タグ',
+    'label(split by ",")'    => 'ラベル(半角コンマ分割)',
+    'Facilityimages'         => '施設紹介イメージ',
+    'Description'            => '施設紹介',
+    'Service_time'           => '施設営業時間',
+    'Tel'                    => '施設電話',
+    'Address'                => '施設館内場所',
+    'Inner_tel'              => '施設内部電話番号',
+    'Createtime'             => '登録時間',
+    'Updatetime'             => '更新時間',
+    'Deletetime'             => '削除時間',
+    'Index Vision'           => 'メインページ表示',
+    'Show Cover'             => '表紙写真',
+    'Show List'              => '施設リスト',
+    'Detail Vision'          => '詳細ページ表示',
+    'Customize'              => 'カスタマイズ',
+    'Merchant.merchant_name' => '店舗',
+
+    'Room'                   => '個室',
+    'Private'                => 'プライベート',
+    '24H'                    => '24H',
+    'Free'                   => '無料',
+    'Childcare'              => '託児',
+    'Chinese'                => '中国語',
+];

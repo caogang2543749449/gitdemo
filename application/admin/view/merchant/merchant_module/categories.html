@@ -1,0 +1,29 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <input id="c-type" name="type" type="hidden" value="{$type}">
+    {foreach $categories as $category}
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-6">{$category['name']}({$category['nickname']}):</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-category_{$category['id']}" name="categories[{$category['id']}]" type="hidden" value="{if $select_ids!=''}{in name="category['id']" value="$select_ids"}{$category['id']}{else}0{/in}{else}{$category['id']}{/if}">
+            <a href="javascript:;" data-toggle="switcher" class="btn-switcher" data-input-id="c-category_{$category['id']}" data-yes="{$category['id']}" data-no="" >
+                <i class="fa fa-toggle-on text-success {if $select_ids!=''}{notin name="category['id']" value="$select_ids"}fa-flip-horizontal text-gray{/notin}{/if} fa-2x"></i>
+            </a>
+        </div>
+    </div>
+    {/foreach}
+    <div class="form-group hidden">
+        <div class="col-xs-12 col-sm-6 text-right">
+            <input id="c-include" name="method" type="radio" value="include" {if $method=="include"}checked{/if}>{:__("Include selected items")}
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-exclude" name="method" type="radio" value="exclude" {if $method=="exclude"}checked{/if}>{:__("Exclude selected items")}
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

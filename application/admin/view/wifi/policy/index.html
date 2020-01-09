@@ -1,0 +1,33 @@
+<div class="panel panel-default panel-intro">
+    <div class="panel-heading input-group">
+        <ul class="nav nav-tabs ">
+            <li class="active"><a href="#prop" data-value="" data-toggle="tab">{:__('WiFi User Policy')}</a></li>
+        </ul>
+        <div class="input-group-btn">
+            <a href="/wifi/policy/edit?ids={$row.id}" class="btn btn-success btn-edit {:$auth->check('merchant/merchant_prop/edit')?'':'hide'}" title="{:__('Edit')}" ><i class="fa fa-pencil"></i> {:__('Edit')}</a>
+        </div>
+    </div>
+
+
+    <div class="panel-body">
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="prop">
+                <div class="form-horizontal">
+                    <input id="c-id" name="row[id]" type="hidden" value="{$row.id|htmlentities}">
+                    <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-2">{:__('Show Policy')}:</label>
+                        <div class="col-xs-12 col-sm-8">
+                            <div id="c-show_policy_flg" class="form-control">{if $row.MerchantProperties.show_policy_flg}{:__('Show')}{else}{:__('Not Show')}{/if}</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-2">{:__('User Policy')}:</label>
+                        <div class="col-xs-12 col-sm-8">
+                            <div id="c-user_policy" class="form-control" {if $row.MerchantProperties.user_policy}style="height: auto;"{/if}>{:str_replace(PHP_EOL,'<br>',$row.MerchantProperties.user_policy)}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

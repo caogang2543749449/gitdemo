@@ -1,0 +1,83 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Code')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-code" data-rule="required;length(~10)" class="form-control" name="row[code]" type="text" value="{$row.code|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Prefecture')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-prefecture" data-rule="required;length(~10)" class="form-control" name="row[prefecture]" type="text" value="{$row.prefecture|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('City')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class='control-relative'><input id="c-city" class="form-control" data-rule="length(~15)" name="row[city]" type="text" value="{$row.city|htmlentities}"></div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Ward')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-ward" class="form-control" name="row[ward]" data-rule="length(~20)"  type="text" value="{$row.ward|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group" id="f-gis_coord">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Gis_coord')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-gis_coord" data-rule="required" class="form-control" size="50" name="row[gis_coord]" type="text" value="{$row.gis_coord|htmlentities}">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" class="btn btn-info showmap" data-output-id="c-gis_coord" data-input-id="c-city"><i class="fa fa-map-marker"></i> {:__('Search')}</button></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Level')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-level" data-rule="required" class="form-control" name="row[level]" type="number" value="{$row.level|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Open_switch')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            
+            <input  id="c-open_switch" name="row[open_switch]" type="hidden" value="{$row.open_switch}">
+            <a href="javascript:;" data-toggle="switcher" class="btn-switcher" data-input-id="c-open_switch" data-yes="1" data-no="0" >
+                <i class="fa fa-toggle-on text-success {eq name="$row.open_switch" value="0"}fa-flip-horizontal text-gray{/eq} fa-2x"></i>
+            </a>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Is_popular')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            
+            <input  id="c-is_popular" name="row[is_popular]" type="hidden" value="{$row.is_popular}">
+            <a href="javascript:;" data-toggle="switcher" class="btn-switcher" data-input-id="c-is_popular" data-yes="1" data-no="0" >
+                <i class="fa fa-toggle-on text-success {eq name="$row.is_popular" value="0"}fa-flip-horizontal text-gray{/eq} fa-2x"></i>
+            </a>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Popular_order')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-popular_order" class="form-control" name="row[popular_order]" type="number"value="{$row.popular_order|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Weigh')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-weigh" class="form-control" name="row[weigh]" type="number" value="{$row.weigh|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

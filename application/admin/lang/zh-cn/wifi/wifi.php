@@ -1,0 +1,30 @@
+<?php
+
+return [
+    'Id'            => 'WifiID',
+    'Merchant_id'   => '商家ID',
+    'Wifi_type'     => '类型',
+    'Dynamic'       => '动态',
+    'Dynamic_content'=>'用户输入项名称',
+    'Dynamic_message'=>'连接WiFi 时, 将 使用 用户输入的内容 替换 {0} 之后的 SSID/Wifi密码 进行连接 WiFi',
+    'Ssid'          => 'SSID',
+    'Security_key'  => 'Wifi密码',
+    'Description'   => '可连接范围',
+    'Verify_type'   => 'Wifi认证方式',
+    'Verify_type 1' => '直连',
+    'Verify_type 2' => '网页认证',
+    'Verify_type 3' => '第三方认证',
+    'Verify_url'    => 'WiFi认证地址',
+    'Createtime'    => '创建时间',
+    'Updatetime'    => '更新时间',
+    'Deletetime'    => '删除时间',
+    'room No.'      => '房间号',
+    'floor'         => '楼层',
+    'Information from hotel' => '酒店提供信息',
+    'Customize Policy' => 'WiFi使用协议个别设置',
+    'Show'             => '显示',
+    'Not Show'         => '不显示',
+    'Inherit'          => '使用通用设置',
+    'User Policy'      => '协议内容',
+
+];

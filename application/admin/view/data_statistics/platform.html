@@ -1,0 +1,283 @@
+<style type="text/css">
+    .sm-st {
+        background: #fff;
+        padding: 20px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        margin-bottom: 20px;
+        -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 1px 0px rgba(0, 0, 0, 0.05);
+    }
+
+    .sm-st-icon {
+        width: 60px;
+        height: 60px;
+        display: inline-block;
+        line-height: 60px;
+        text-align: center;
+        font-size: 30px;
+        background: #eee;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        float: left;
+        margin-right: 10px;
+        color: #fff;
+    }
+
+    .sm-st-info {
+        font-size: 12px;
+        padding-top: 2px;
+    }
+
+    .sm-st-info span {
+        display: block;
+        font-size: 24px;
+        font-weight: 600;
+    }
+
+    .orange {
+        background: #fa8564 !important;
+    }
+
+    .tar {
+        background: #45cf95 !important;
+    }
+
+    .sm-st .green {
+        background: #86ba41 !important;
+    }
+
+    .pink {
+        background: #AC75F0 !important;
+    }
+
+    .yellow-b {
+        background: #fdd752 !important;
+    }
+
+    .stat-elem {
+
+        background-color: #fff;
+        padding: 18px;
+        border-radius: 40px;
+
+    }
+
+    .stat-info {
+        text-align: center;
+        background-color: #fff;
+        border-radius: 5px;
+        margin-top: -5px;
+        padding: 8px;
+        -webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 1px 0px rgba(0, 0, 0, 0.05);
+        font-style: italic;
+    }
+
+    .stat-icon {
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .st-red {
+        background-color: #F05050;
+    }
+
+    .st-green {
+        background-color: #27C24C;
+    }
+
+    .st-violet {
+        background-color: #7266ba;
+    }
+
+    .st-blue {
+        background-color: #23b7e5;
+    }
+
+    .stats .stat-icon {
+        color: #28bb9c;
+        display: inline-block;
+        font-size: 26px;
+        text-align: center;
+        vertical-align: middle;
+        width: 50px;
+        float: left;
+    }
+
+    .stat {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    .stat .value {
+        font-size: 20px;
+        line-height: 24px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-weight: 500;
+    }
+
+    .stat .name {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .stat.lg .value {
+        font-size: 26px;
+        line-height: 28px;
+    }
+
+    .stat.lg .name {
+        font-size: 16px;
+    }
+
+    .stat-col .progress {
+        height: 2px;
+    }
+
+    .stat-col .progress-bar {
+        line-height: 2px;
+        height: 2px;
+    }
+
+    .item {
+        padding: 30px 0;
+    }
+</style>
+
+<div class="panel panel-default panel-intro">
+    <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade active in" id="one">
+
+            <div class="row">
+                <div class="col-sm-3 col-xs-6">
+                    <div class="sm-st clearfix">
+                        <span class="sm-st-icon st-red"><i class="fa fa-users"></i></span>
+                        <div class="sm-st-info">
+                            <span id="t-user"></span>
+                            {:__('Total user')}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-xs-6">
+                    <div class="sm-st clearfix">
+                        <span class="sm-st-icon st-green"><i class="fa fa-users"></i></span>
+                        <div class="sm-st-info">
+                            <span id="t-scan"></span>
+                            {:__('Scan open')}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-xs-6">
+                    <div class="sm-st clearfix">
+                        <span class="sm-st-icon st-violet"><i class="fa fa-users"></i></span>
+                        <div class="sm-st-info">
+                            <span id="t-normal"></span>
+                            {:__('Normal open')}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-xs-6">
+                    <div class="sm-st clearfix">
+                        <span class="sm-st-icon st-blue"><i class="fa fa-users"></i></span>
+                        <div class="sm-st-info">
+                            <span id="t-share"></span>
+                            {:__('Share')}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <form id="edit-form" role=form class="form-horizontal nice-validator n-default n-bootstrap" novalidate="" method="post" action="">
+                    <div class="row">
+                        <div class="form-group col-sm-6 col-xs-6">
+                            <label class="control-label col-xs-4">{:__('Merchant')}</label>
+                            <div class="col-xs-8">
+                                {:build_radios('search[merchant_id]', [$merchant_id=>__('Current Merchant'), '0'=>__('All Merchant')], 0)}
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6 col-xs-6">
+                            <label class="control-label col-xs-4">{:__('Statistics Type')}</label>
+                            <div class="col-xs-8">
+                                {:build_radios('search[type]', ['1'=>__('Timeline'), '2'=>__('Time Period')], 1)}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row timeline-row">
+                        <div class="form-group col-sm-6 col-xs-6">
+                            <label class="control-label col-xs-4">{:__('Base Time')}</label>
+                            <div class="col-xs-8">
+                                <input id="c-basetime" class="form-control datetimepicker" data-date-format="YYYY-MM-DD" data-date-show-today-button="true" data-date-show-close="false" name="search[basetime]" type="text" value="{:date('Y-m-d')}">
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6 col-xs-6">
+                            <label class="control-label col-xs-4">{:__('Term Length')}</label>
+                            <div class="col-xs-2">
+                                <select id="c-term" class="form-control selectpicker" name="search[term_length]">
+                                    {for start="1" end="31"}
+                                    <option value="{$i}" {if condition="$i==7"}selected{/if}>{$i}</option>
+                                    {/for}
+                                </select>
+                            </div>
+                            <div class="col-xs-4">
+                                <select id="c-timeline-scale" class="form-control selectpicker" style="width: 50px;" name="search[scale_timeline]">
+                                    <option value="1">{:__('Day')}</option>
+                                    <option value="2" selected>{:__('Week')}</option>
+                                    <option value="3">{:__('Month')}</option>
+                                    <option value="4">{:__('Year')}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row period-row hidden">
+                        <div class="form-group col-sm-6 col-xs-6">
+                            <label class="control-label col-xs-4">{:__('Scale')}</label>
+                            <div class="col-xs-8">
+                                <select id="c-period-scale" class="form-control selectpicker" name="search[scale_period]">
+                                    <option value="1" selected>{:__('Hourly')}</option>
+                                    <option value="2">{:__('Week-daily')}</option>
+                                    <option value="3">{:__('Monthly')}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6 col-xs-6">
+                            <label class="control-label col-xs-4">{:__('Statistics Item')}</label>
+                            <div class="col-xs-8">
+                                <select id="c-item" class="form-control selectpicker" name="search[item]">
+                                    <option value="user_join" selected>{:__('User Sign-up')}</option>
+                                    <option value="scan_open">{:__('Scan open')}</option>
+                                    <option value="normal_open">{:__('Normal open')}</option>
+                                    <option value="share">{:__('Share')}</option>
+                                    <option value="coupon_used_count">{:__('Coupon used count')}</option>
+<!--                                    <option value="button_click">{:__('Function usage')}</option>-->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6 col-xs-6  layer-footer">
+                            <div class="col-sm-8 col-xs-offset-4">
+                                <button type="submit" class="btn btn-success btn-embossed disabled">{:__('Search')}</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="row center-block">
+                <div class="col-lg-12">
+                    <div id="echart" style="height:400px;width:100%;"></div>
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
+
+        </div>
+    </div>
+</div>

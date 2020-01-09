@@ -1,0 +1,43 @@
+<form id="refund-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <input id="c-id" name="refund_id" type="hidden" value="{$refundId}">
+    <div class="form-group col-xs-12">
+        <label class="control-label col-xs-12 col-sm-2 required">{:__('Refund_reason')}:</label>
+        <div class="col-xs-12 col-sm-8 no-padding">
+            {:build_select('refund[refund_reason_code]', $refundReasonList, [], ["class"=>"selectpicker"])}
+        </div>
+    </div>
+    <div class="form-group col-xs-12 reason hidden">
+        <label class="control-label col-xs-12 col-sm-2 required">{:__('Max 80 chars')}:</label>
+        <div class="col-xs-12 col-sm-8 no-padding">
+            <input id="c-reason" class="form-control" name="refund[refund_reason]" type="text" maxlength="80">
+        </div>
+    </div>
+    <div class="form-group col-xs-12">
+        <label class="control-label col-xs-12 col-sm-2 required">{:__('Refund_quantity')}:</label>
+        <div class="col-xs-12 col-sm-8 no-padding">
+            <select id="c-refund_quantity" class="form-control selectpicker" name="refund[refund_quantity]">
+                {for start="1" end="$refundableQuantity+1"}
+                <option value="{$i}" {if condition="$i==$refundableQuantity"}selected{/if}>{$i}</option>
+                {/for}
+            </select>
+        </div>
+    </div>
+    <div class="form-group col-xs-12">
+        <div class="fit-width">
+            <div class="form-control no-border">{:__('Refund_goods')}:</div>
+        </div>
+        <table id="goods-table" class="table table-striped table-bordered table-hover table-nowrap" width="100%"></table>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-7">
+            <button type="submit" class="btn btn-danger btn-embossed disabled">{:__('Action Refund')}</button>
+        </div>
+        <div class="col-xs-12 col-sm-2">
+            <button type="button" class="btn btn-primary btn-embossed btn-close">{:__('Close')}</button>
+        </div>
+    </div>
+</form>
+<script>
+    var orderGoods = [{:json_encode($orderGoods)}];
+</script>

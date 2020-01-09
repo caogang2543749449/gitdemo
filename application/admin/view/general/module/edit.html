@@ -1,0 +1,94 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2 required">{:__('Key')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-key" data-rule="required;length(~20)" class="form-control" name="row[key]" type="text" value="{$row.key|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Merchant.merchant_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+
+            <select  id="c-merchant_id" class="form-control selectpicker" name="row[merchant_id]">
+                <option value="0">-</option>
+                {foreach name="merchantList" item="vo"}
+                <option value="{$vo.id}" {in name="vo.id" value="$row.merchant_id"}selected{/in}>{:__($vo.merchant_name)}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2 required">{:__('Name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-name" data-rule="required;length(~20)" class="form-control" name="row[name]" type="text" value="{$row.name|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Icon')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-icon" class="form-control" size="50" name="row[icon]" data-rule="length(~200)" type="text" value="{$row.icon|htmlentities}">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-icon" class="btn btn-danger plupload" data-url='general/module/upload' data-input-id="c-icon" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="true" data-maxcount="2" data-preview-id="p-icon"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-icon" class="btn btn-primary syschoose" data-input-id="c-icon" data-mimetype="image/*" data-multiple="true" data-maxcount="2"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-icon"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-icon"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2 required">{:__('Location')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-location" data-rule="required;length(~20)" class="form-control" name="row[location]" type="text" value="{$row.location}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Target_type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+
+            <select  id="c-target_type" class="form-control selectpicker" name="row[target_type]">
+                {foreach name="targetTypeList" item="vo"}
+                <option value="{$key}" {in name="key" value="$row.target_type"}selected{/in}>{:__($vo)}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Target_link')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-target_link" class="form-control" data-rule="length(~200)"name="row[target_link]" type="text" value="{$row.target_link}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Category url')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-category_url" class="form-control"  data-rule="length(~200)" name="row[category_url]" type="text" value="{$row.category_url|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Standard')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="radio">
+                <label for="c-is_standard-yes"><input id="c-is_standard-yes" type="radio" name="row[is_standard]" value="1" {if $row.is_standard==1}checked{/if}> {:__('Standard')}</label>
+                <label for="c-is_standard-no"><input id="c-is_standard-no" type="radio" name="row[is_standard]" value="0" {if $row.is_standard==0}checked{/if}> {:__('Option')}</label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Weigh')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-weigh" class="form-control" name="row[weigh]" type="number" value="{$row.weigh}">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

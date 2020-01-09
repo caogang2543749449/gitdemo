@@ -1,0 +1,146 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="col-xs-12">
+        <input id="c-id" name="row[id]" type="hidden" value="{$row.id|htmlentities}">
+        <div class="form-group col-xs-12 layui-layer-border bg-gray-light">
+            <div class="form-group fit-width">
+                <div class="form-control no-border">{:__('Order_info')}:</div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6">
+                <label class="control-label col-xs-12 col-sm-5">{:__('Order_sn')}:</label>
+                <div class="col-xs-12 col-sm-7 no-padding">
+                    <span class="form-control" style="padding-left: 1px">{$row.order_sn}</span>
+                </div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6">
+                <label class="control-label col-xs-12 col-sm-5">{:__('Status')}:</label>
+                <div class="col-xs-12 col-sm-7 no-padding">
+                    <span id="c-status" class="form-control">
+                    {foreach name="statusList" item="vo"}
+                    {in name="key" value="$row.status"}{$vo}{/in}
+                    {/foreach}
+                    </span>
+                </div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6">
+                <label class="control-label col-xs-12 col-sm-5">{:__('Order_money')}:</label>
+                <div class="col-xs-12 col-sm-7 no-padding">
+                    <span class="form-control">{$row.real_money|intval}</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-xs-12 layui-layer-border bg-gray-light">
+            <div class="form-group fit-width">
+                <div class="form-control no-border">{:__('User_info')}:</div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                <label class="control-label col-xs-12 col-sm-5">{:__('Checkin_name')}:</label>
+                <div class="col-xs-12 col-sm-7 no-padding">
+                    <span class="form-control">{$row.checkin_name}</span>
+                </div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                <label class="control-label col-xs-12 col-sm-5">{:__('Checkin_room')}:</label>
+                <div class="col-xs-12 col-sm-7 no-padding">
+                    <span class="form-control">{$row.checkin_room}</span>
+                </div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                <label class="control-label col-xs-12 col-sm-5">{:__('Delivery_hope')}:</label>
+                <div class="col-xs-12 col-sm-7 no-padding">
+                    <span class="form-control">
+                        {if $row.delivery_hope_date!=null}
+                            {$row.delivery_hope_date} {$row.delivery_hope_time}{:__("O'clock")}~{$row.delivery_hope_time+1}{:__("O'clock")}
+                        {else}
+                            {:__('Immediately')}
+                        {/if}
+                    </span>
+                </div>
+            </div>
+        </div>
+        {if $row.message}
+        <div class="form-group col-xs-12 layui-layer-border bg-gray-light">
+            <div class="form-group fit-width">
+                <div class="form-control no-border">{:__('Message')}:</div>
+            </div>
+            <div class="form-group col-xs-12">
+                <span style="height: auto;">{:str_replace(PHP_EOL,'<br>',$row.message)}</span>
+            </div>
+        </div>
+        {/if}
+        {if $row.paid_id}
+        <div class="form-group col-xs-12 layui-layer-border bg-gray-light">
+            <div class="form-group fit-width">
+                <div class="form-control no-border">{:__('Paid_info')}:</div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                <label class="control-label col-xs-12 col-sm-5">{:__('Paid_id')}:</label>
+                <div class="col-xs-12 col-sm-7 no-padding">
+                    <span class="form-control">{$row.paid_id}</span>
+                </div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                <label class="control-label col-xs-12 col-sm-5">{:__('Paid_time')}:</label>
+                <div class="col-xs-12 col-sm-7 no-padding">
+                    <span class="form-control">{$row.paid_time}</span>
+                </div>
+            </div>
+        </div>
+        {/if}
+        {if $row.deliver_time}
+        <div class="form-group col-xs-12 layui-layer-border bg-gray-light">
+            <div class="form-group fit-width">
+                <div class="form-control no-border">{:__('Delivery_info')}:</div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                <label class="control-label col-xs-12 col-sm-5">{:__('Deliver_time')}:</label>
+                <div class="col-xs-12 col-sm-7 no-padding">
+                    <span class="form-control">{$row.deliver_time}</span>
+                </div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                <label class="control-label col-xs-12 col-sm-5">{:__('Receive_time')}:</label>
+                <div class="col-xs-12 col-sm-7 no-padding">
+                    <span class="form-control">{$row.receive_time}</span>
+                </div>
+            </div>
+        </div>
+        {/if}
+        <div id="b-refund_info" class="form-group col-xs-12 layui-layer-border bg-gray-light {if $row.refunded_money==0}hidden{/if}">
+            <div class="form-group fit-width">
+                <div class="form-control no-border">{:__('Refund_info')}:</div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                <label class="control-label col-xs-12 col-sm-5">{:__('Refunded_money')}:</label>
+                <div class="col-xs-12 col-sm-7 no-padding">
+                    <span id="c-refunded_money" class="form-control">{:intval($row.refunded_money)}</span>
+                </div>
+            </div>
+            <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                <label class="control-label col-xs-12 col-sm-5">{:__('Last_refund_time')}:</label>
+                <div class="col-xs-12 col-sm-7 no-padding">
+                    <span id="c-last_refund_time" class="form-control">{$row.last_refund_time}</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-xs-12">
+            <div class="fit-width toolbar">
+                <div class="form-control no-border">{:__('Order_goods')}:</div>
+                <a href="javascript:;" class="btn btn-primary btn-refresh hidden" title="{:__('Refresh')}" ><i class="fa fa-refresh"></i> </a>
+            </div>
+            <table id="goods-table" class="table table-striped table-bordered table-hover table-nowrap" width="100%"></table>
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-7">
+            {if isset($nextStep)}
+            <input id="c-next_step" name="next_step" type="hidden" value="{:key($nextStep)}">
+            <button type="button" class="btn btn-success btn-embossed btn-nextStep">{:__(current($nextStep))}</button>
+            {/if}
+        </div>
+        <div class="col-xs-12 col-sm-2">
+            <button type="button" class="btn btn-success btn-embossed btn-refresh hidden">{:__('Refresh')}</button>
+            <button type="button" class="btn btn-primary btn-embossed btn-close">{:__('Close')}</button>
+        </div>
+    </div>
+</form>

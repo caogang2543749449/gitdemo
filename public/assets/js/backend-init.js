@@ -1,0 +1,2 @@
+define(['backend'], function (Backend) {
+});

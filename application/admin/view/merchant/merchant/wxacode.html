@@ -1,0 +1,15 @@
+<div id="wxacode" class="form-horizontal">
+
+
+    {if isset($result) }
+    <div class="form-group">
+        <span class="description-block danger">{$result}</span>
+    </div>
+    {/if}
+    {if isset($wxaCode) }
+    <div class="form-group">
+        <img src="{$wxaCode}" alt="" style="height: 500px;width: 500px"/>
+    </div>
+    {/if}
+
+</div>
