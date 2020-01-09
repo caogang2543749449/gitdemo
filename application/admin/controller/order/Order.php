@@ -9,6 +9,8 @@ use think\Exception;
 use think\exception\PDOException;
 use think\exception\ValidateException;
 
+use think\exception\ValidateException2;
+
 /**
  * 订单管理
  *
