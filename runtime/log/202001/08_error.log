@@ -1,0 +1,3 @@
+---------------------------------------------------------------
+[2020-01-08 16:02:56.000000] 127.0.0.1 GET www.fa.cn/third/wxacode/ids/2?dialog=1
+[ error ] Get wechat access_token failed with error-code(41002) : appid missing hint: [yRUfva09771507]
