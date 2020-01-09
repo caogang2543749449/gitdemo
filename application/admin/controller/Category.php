@@ -4,7 +4,7 @@ namespace app\admin\controller;
 
 use app\common\controller\Backend;
 use app\common\model\Category as CategoryModel;
-use fast\Tree111;
+use fast\Tree11122222;
 
 /**
  * 分类管理
